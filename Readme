@@ -206,6 +206,29 @@ git config --global user.email "ravinarathod009@gmail.com"
 Then when you commit:
 Author: CloudDevopsRavina <ravinarathod009@gmail.com>
 
+Git Pull:-
+🔹 What is git pull?
+
+git pull is used to update your local branch with the latest changes from the remote repo (GitHub, GitLab, etc.).
+
+It’s basically a shortcut:
+
+git pull = git fetch + git merge
+
+Example :- Create a file 3 from github and checked in my local branch , i was not seeing the file
+Bcz i need to use git pull , to get the latest changes from remote repo
+
+and when runned Git logs for file 3 saw below response
+origin/HEAD
+
+origin/HEAD is a symbolic reference in the remote repo that points to the default branch of origin.
+
+On GitHub, the default branch is usually main (but could also be master or something else if the project set it).
+👉 So origin/HEAD -> origin/main means:
+“The default branch on GitHub (origin) is main.”
+$ git log
+commit 822a3deed583a93fd98f78f17e47a1de6e78ac2b (HEAD -> main, origin/main, origin/HEAD)
+
 
 
 
