@@ -1,0 +1,215 @@
+Git & Git HUB
+Installation :-
+Create a account for Github & download a git in ur system.
+Example1:
+I tried a got status from folder received the below error:
+Error:----
+$ git status fatal: not a git repository (or any of the parent directories): .git 
+Ah 👍 that error means you’re running git status in a folder that is not a Git repository (i.e., it doesn’t have a hidden .git/ folder inside).
+
+Example 2:-
+I tried to creating a 1 file and checked the Git status without adding will get below response
+$ git status
+On branch main
+No commits yet
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file1
+nothing added to commit but untracked files present (use "git add" to track)
+
+Exaple 3:- I have added a file using git add file1 command
+Then checked for status ,response is 
+$ git status
+On branch main
+No commits yet
+Changes to be committed:
+  (use "git rm --cached <fil
+Example 4:- I did git commit -m file1
+Response:- 
+$ git commit -m "file1"
+[main (root-commit) 94048c9] file1
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+checked for status and we get working tree clean nothing to commit
+$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+example 4:- 1st time when u do git push , will get popup we need browse and provide our credential details.
+ravin@Ravina MINGW64 ~/DevOps/Githubpractice/Git-Gitlab_Practice (main)
+$ git push
+info: please complete authentication in your browser...
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 214 bytes | 214.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/CloudDevopsRavina/Git-Gitlab_Practice.git
+ * [new branch]      main -> main
+
+ravin@Ravina MINGW64 ~/DevOps/Githubpractice/Git-Gitlab_Practice (main)
+$
+
+ravin@Ravina MINGW64 ~/DevOps/Githubpractice/Git-Gitlab_Practice (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+Gone through Git commit -m “file2”
+Response:- Command You Ran
+git commit -m "file2"
+This means you created a commit (a snapshot of changes) with the commit message "file2".
+________________________________________
+🔹 Git Output Explained
+[main 79b3f69] file2
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file2
+1. [main 79b3f69] file2
+•	main → The branch where the commit happened. (Default branch name is main.)
+•	79b3f69 → The commit hash (ID). Git gives every commit a unique SHA-1 hash. This lets you refer to the commit later (for revert, checkout, etc.).
+•	file2 → The commit message you wrote with -m.
+________________________________________
+2. 1 file changed, 0 insertions(+), 0 deletions(-)
+•	1 file changed → You added 1 new file (file2).
+•	0 insertions(+), 0 deletions(-) → Since file2 is empty (no text inside), no actual lines were added or removed.
+________________________________________
+3. create mode 100644 file2
+•	create mode → A new file was created.
+•	100644 → This is a Unix-style file permission:
+o	100 → Regular file.
+o	644 → File permissions: read & write for owner, read-only for group and others.
+(So: owner can edit, everyone else can only read.)
+•	file2 → The filename.
+
+Git Logs:-
+🔹 What is git log?
+•	git log shows the history of commits in your repository.
+•	Each commit = a snapshot of changes in time.
+________________________________________
+🔹 Basic git log Output Example
+git log
+You might see:
+commit 79b3f6985569b63078d9bc5c997a7531e8fea5ad (HEAD -> main)
+Author: CloudDevopsRavina <ravinarathod009@gmail.com>
+Date:   Mon Sep 1 12:44:10 2025 +0530
+
+    file2
+
+commit 94048c9470c28155c1f022d753080c459c014ad5 (origin/main)
+Author: CloudDevopsRavina <ravinarathod009@gmail.com>
+Date:   Mon Sep 1 12:35:40 2025 +0530
+
+    file1
+________________________________________
+🔹 Breaking it Down
+1. commit 79b3f698...
+•	This is the commit hash (ID).
+•	Each commit has a unique SHA-1 identifier.
+•	You can use it in commands (e.g., git checkout <hash>).
+2. (HEAD -> main)
+•	HEAD → your current position.
+•	main → the branch you are on.
+•	So this means you are on the latest commit of branch main.
+3. (origin/main)
+•	This shows the state of the branch on the remote (GitHub).
+•	In this case, the older commit belongs to GitHub’s main.
+4. Author
+•	Who made the commit (name + email from git config).
+5. Date
+•	When the commit was made.
+6. Message
+•	Whatever you wrote with -m in git commit -m "message".
+________________________________________
+🔹 Useful Variations of git log
+👉 Compact one-line history:
+git log --oneline
+Output:
+79b3f69 (HEAD -> main) file2
+94048c9 (origin/main) file1
+👉 Graph view (shows branches & merges):
+git log --oneline --graph --all
+Example:
+* 79b3f69 (HEAD -> main) file2
+* 94048c9 (origin/main) file1
+👉 Show author only:
+git log --author="Ravina"
+👉 Show last 3 commits:
+git log -3
+👉 Show changes in each commit:
+git log -p
+________________________________________
+🔹 Mental Picture
+•	git log = history book of your project.
+•	Each commit = a page in that book.
+•	HEAD = bookmark on the page you’re currently reading.
+•	main = your local copy of the book.
+•	origin/main = the team’s copy stored on GitHub.
+
+
+Summary
+•	HEAD → pointer to where you are (like a bookmark in your notebook).
+•	main → your local branch (your copy of the notebook).
+•	origin/main → the branch on GitHub (the team’s shared notebook).
+Git Config
+git config is one of the first commands you use when setting up Git. It’s how you configure Git’s settings — globally (for all repos) or locally (per project).
+________________________________________
+🔹 What is git config?
+•	Git uses a configuration system to store settings like:
+o	Your name & email (for commits)
+o	Default branch name
+o	Editor preference
+o	Merge & diff tools
+•	These settings can be stored at different levels.
+________________________________________
+🔹 Levels of git config
+1.	System (applies to all users on a machine):
+2.	git config --system
+Stored in: /etc/gitconfig
+3.	Global (applies to your user account):
+4.	git config --global
+Stored in: ~/.gitconfig
+5.	Local (applies only to a specific repo):
+6.	git config --local
+Stored in: .git/config inside the repo.
+⚡ Priority order → Local > Global > System
+(if the same setting exists at multiple levels, local wins).
+________________________________________
+🔹 Common git config Commands
+1. Set Your Name & Email
+(Used in commit history)
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+2. Check Your Config
+git config --list
+or
+git config --global --list
+3. Change Default Branch Name
+(Instead of master, use main)
+git config --global init.defaultBranch main
+4. Set Default Editor
+(For commit messages etc.)
+git config --global core.editor "code --wait"   # VS Code
+git config --global core.editor "nano"          # Nano
+5. Aliases (shortcuts)
+Example: make git st mean git status
+git config --global alias.st status
+6. Check Where a Setting Comes From
+git config --show-origin user.name
+________________________________________
+🔹 Example
+git config --global user.name "CloudDevopsRavina"
+git config --global user.email "ravinarathod009@gmail.com"
+Then when you commit:
+Author: CloudDevopsRavina <ravinarathod009@gmail.com>
+
+
+
+
+
+
+
+
